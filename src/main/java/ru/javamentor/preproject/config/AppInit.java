@@ -10,7 +10,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{HibernateConfig.class};
     }
 
     @Override
@@ -31,7 +31,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         registerHiddenFieldFilter(servletContext);
     }
 
-    private void registerHiddenFieldFilter (ServletContext context) {
+    private void registerHiddenFieldFilter(ServletContext context) {
         context.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
 }

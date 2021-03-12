@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.javamentor.preproject.dao.PersonDao;
+import ru.javamentor.preproject.dao.PersonDaoHibernate;
 import ru.javamentor.preproject.model.Person;
 
 import javax.validation.Valid;
@@ -14,12 +15,16 @@ import javax.validation.Valid;
 @RequestMapping("/people")
 public class PeopleController {
 
-    private final PersonDao personDao;
+    //private final PersonDao personDao;
+    private final PersonDaoHibernate personDao;
 
     @Autowired
-    public PeopleController(PersonDao personDao) {
+    public PeopleController(PersonDaoHibernate personDao) {
         this.personDao = personDao;
     }
+    // public PeopleController(PersonDao personDao) {
+    //     this.personDao = personDao;
+    //  }
 
     @GetMapping()
     public String index(Model model) {
